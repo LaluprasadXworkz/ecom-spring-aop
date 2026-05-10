@@ -22,7 +22,7 @@ public class ProductController {
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
         log.info("Create Product API Called");
         ProductDto response = productService.createProduct(productDto);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
