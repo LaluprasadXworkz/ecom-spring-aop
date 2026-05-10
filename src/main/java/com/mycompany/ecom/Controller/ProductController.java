@@ -19,64 +19,37 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/create")
-    public ResponseEntity<ProductDto> createProduct(
-            @RequestBody ProductDto productDto) {
-
+    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
         log.info("Create Product API Called");
-
-        ProductDto response =
-                productService.createProduct(productDto);
-
-        return new ResponseEntity<>(
-                response,
-                HttpStatus.CREATED);
+        ProductDto response = productService.createProduct(productDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDto> getProductById(
-            @PathVariable Long id) {
-
+    public ResponseEntity<ProductDto> getProductById(@PathVariable Long id) {
         log.info("Get Product By Id API Called");
-
-        ProductDto response =
-                productService.getProductById(id);
-
+        ProductDto response = productService.getProductById(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
-
         log.info("Get All Products API Called");
-
-        List<ProductDto> response =
-                productService.getAllProducts();
-
+        List<ProductDto> response = productService.getAllProducts();
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductDto> updateProduct(
-            @PathVariable Long id,
-            @RequestBody ProductDto productDto) {
-
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
         log.info("Update Product API Called");
-
-        ProductDto response =
-                productService.updateProduct(id, productDto);
-
+        ProductDto response = productService.updateProduct(id, productDto);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProduct(
-            @PathVariable Long id) {
-
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         log.info("Delete Product API Called");
-
         productService.deleteProduct(id);
-
-        return ResponseEntity.ok(
-                "Product Deleted Successfully");
+        return ResponseEntity.ok("Product Deleted Successfully");
     }
 }

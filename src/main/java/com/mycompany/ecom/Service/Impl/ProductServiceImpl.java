@@ -86,8 +86,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity entity = productRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("Product Not Found");
-                    return new ProductNotFoundException(
-                            "Product Not Found");
+                    return new ProductNotFoundException("Product Not Found");
                 });
         productRepository.delete(entity);
 
